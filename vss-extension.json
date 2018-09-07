@@ -2,7 +2,8 @@
   "manifestVersion": 1,
   "id": "vsts-ensure-tests-tasks",
   "name": "Ensure Tests",
-  "version": "0.0.3",
+  "version": "0.0.6",
+
   "publisher": "jessehouwing",
   "targets": [
     {
@@ -14,7 +15,12 @@
   ],
   "description": "Ensure that test results are linked to this build.",
   "categories": [
-    "Build and release"
+    "Build and release", "Test"
+  ],
+  "public": true,
+  "galleryFlags": [
+    "Preview",
+    "Public"
   ],
   "tags": [
     "Extension",
@@ -23,7 +29,7 @@
     "Xpirit"
   ],
   "screenshots": [
-    
+    { "path": "extension/Images/Screenshots/configure-phase.png" }
   ],
   "content": {
     "details": {
@@ -44,13 +50,8 @@
   "badges": [
     {
       "href": "https://paypal.me/jessehouwing/5",
-      "uri": "https://raw.githubusercontent.com/jessehouwing/vsts-ensure-tests-tasks/master/extension/images/donate.png",
+      "uri": "https://raw.githubusercontent.com/jessehouwing/vsts-ensure-tests/master/extension/images/donate.png",
       "description": "Donate"
-    },
-    {
-      "href": "https://jessehouwing.visualstudio.com/vsts-extensions/vsts-extensions%20Team/_build/index?definitionId=47&_a=completed",
-      "uri": "https://jessehouwing.visualstudio.com/_apis/public/build/definitions/a88536a2-a889-45a3-a955-ddf1af8aeba1/47/badge",
-      "description": "Build"
     }
   ],
   "repository": {
