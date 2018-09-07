@@ -2,7 +2,7 @@
   "manifestVersion": 1,
   "id": "vsts-ensure-tests-tasks",
   "name": "Ensure Tests",
-  "version": "0.0.6",
+  "version": "0.0.7",
 
   "publisher": "jessehouwing",
   "targets": [
@@ -41,10 +41,10 @@
   },
   "links": {
     "getstarted": {
-      "uri": "https://github.com/jessehouwing/vsts-ensure-tests-tasks/wiki"
+      "uri": "https://github.com/jessehouwing/vsts-ensure-tests/wiki"
     },
     "support": {
-      "uri": "https://github.com/jessehouwing/vsts-ensure-tests-tasks/issues"
+      "uri": "https://github.com/jessehouwing/vsts-ensure-tests/issues"
     }
   },
   "badges": [
@@ -56,7 +56,7 @@
   ],
   "repository": {
     "type": "git",
-    "uri": "https://github.com/jessehouwing/vsts-ensure-tests-tasks"
+    "uri": "https://github.com/jessehouwing/vsts-ensure-tests"
   },
   "branding": {
     "color": "rgb(36, 43, 50)",
