@@ -68,6 +68,10 @@
   "files": [
     {
       "path": "EnsureTests"
+    },
+    { 
+      "path": "extension/Images/Screenshots/configure-phase.png",
+      "addressable": true
     }
   ],
   "contributions": [
