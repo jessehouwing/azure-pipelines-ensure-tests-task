@@ -21,6 +21,13 @@
   "preview": true,
   "instanceNameFormat": "Ensure tests have executed",
   "inputs": [
+    {
+      "name": "minNumOfExpectedTests",
+      "type": "int",
+      "label": "Minimum number of expected tests",
+      "required": true,
+      "defaultValue": 0
+    }
   ],
   "execution": {
     "HttpRequest": {
@@ -31,7 +38,7 @@
         "Body": "",
         "Headers":"{\n\"Content-Type\":\"application/json\"\n, \"Authorization\":\"Bearer $(system.accesstoken)\"\n}",
         "WaitForCompletion": "false",
-        "Expression": "lt(0, jsonpath('$.aggregatedResultsAnalysis.totalTests')[0])"
+        "Expression": "lt($(minNumOfExpectedTests), jsonpath('$.aggregatedResultsAnalysis.totalTests')[0])"
       }
     }
   }
