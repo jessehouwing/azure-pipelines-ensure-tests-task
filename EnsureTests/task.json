@@ -41,7 +41,7 @@
         "Body": "",
         "Headers":"{\n\"Content-Type\":\"application/json\"\n, \"Authorization\":\"Bearer $(system.accesstoken)\"\n}",
         "WaitForCompletion": "false",
-        "Expression": "lte($(minNumOfExpectedTests), jsonpath('$.aggregatedResultsAnalysis.totalTests')[0])"
+        "Expression": "le($(minNumOfExpectedTests), jsonpath('$.aggregatedResultsAnalysis.totalTests')[0])"
       }
     }
   }
