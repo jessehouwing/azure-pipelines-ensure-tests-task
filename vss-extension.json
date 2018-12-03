@@ -15,15 +15,17 @@
   ],
   "description": "Ensure that test results are linked to this build.",
   "categories": [
-    "Build and release", "Test"
+    "Azure Pipelines", "Azure Test Plans"
   ],
   "public": true,
   "galleryFlags": [
-    "Preview",
     "Public"
   ],
   "tags": [
+    "Task",
+    "Pipelines",
     "Extension",
+    "Gate",
     "Build",
     "Test",
     "Xpirit"
