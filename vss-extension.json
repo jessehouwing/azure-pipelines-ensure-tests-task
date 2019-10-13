@@ -38,15 +38,24 @@
       "path": "readme.md"
     },
     "license": {
-      "path": "license.txt"
+      "path": "LICENSE.md"
+    },
+    "privacy": {
+      "path": "PRIVACY.md"
     }
   },
   "links": {
     "getstarted": {
-      "uri": "https://github.com/jessehouwing/vsts-ensure-tests/wiki"
+      "uri": "https://github.com/jessehouwing/azure-pipelines-ensure-tests-task/wiki"
     },
     "support": {
-      "uri": "https://github.com/jessehouwing/vsts-ensure-tests/issues"
+      "uri": "https://github.com/jessehouwing/azure-pipelines-ensure-tests-task/issues"
+    },
+    "license": {
+      "uri": "https://github.com/jessehouwing/azure-pipelines-ensure-tests-task/LICENSE.md"
+    },
+    "privacypolicy": {
+      "uri": "https://github.com/jessehouwing/azure-pipelines-ensure-tests-task/blob/master/PRIVACY.md"
     }
   },
   "badges": [
@@ -58,7 +67,7 @@
   ],
   "repository": {
     "type": "git",
-    "uri": "https://github.com/jessehouwing/vsts-ensure-tests"
+    "uri": "https://github.com/jessehouwing/azure-pipelines-ensure-tests-task"
   },
   "branding": {
     "color": "rgb(36, 43, 50)",
@@ -71,7 +80,7 @@
     {
       "path": "EnsureTests"
     },
-    { 
+    {
       "path": "extension/Images/Screenshots/configure-phase.png",
       "addressable": true
     }
