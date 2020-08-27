@@ -55,13 +55,13 @@
       "uri": "https://github.com/jessehouwing/azure-pipelines-ensure-tests-task/LICENSE.md"
     },
     "privacypolicy": {
-      "uri": "https://github.com/jessehouwing/azure-pipelines-ensure-tests-task/blob/master/PRIVACY.md"
+      "uri": "https://github.com/jessehouwing/azure-pipelines-ensure-tests-task/blob/main/PRIVACY.md"
     }
   },
   "badges": [
     {
       "href": "https://paypal.me/jessehouwing/5",
-      "uri": "https://raw.githubusercontent.com/jessehouwing/vsts-ensure-tests/master/extension/images/donate.png",
+      "uri": "https://raw.githubusercontent.com/jessehouwing/vsts-ensure-tests/main/extension/images/donate.png",
       "description": "Donate"
     }
   ],
