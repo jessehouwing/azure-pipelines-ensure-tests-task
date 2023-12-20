@@ -60,9 +60,9 @@
   },
   "badges": [
     {
-      "href": "https://paypal.me/jessehouwing/5",
-      "uri": "https://raw.githubusercontent.com/jessehouwing/vsts-ensure-tests/main/extension/images/donate.png",
-      "description": "Donate"
+      "href": "https://github.com/sponsors/jessehouwing",
+      "uri": "https://img.shields.io/github/sponsors/jessehouwing",
+      "description": "GitHub Sponsors"
     }
   ],
   "repository": {
