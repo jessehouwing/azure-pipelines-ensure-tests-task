@@ -52,7 +52,7 @@ steps:
     connectedServiceName: $(marketplaceServiceConnection)
     fileType: 'vsix'
     vsixFile: '$(vsix)'
-    updateTasksVersion: false
+    updateTasksVersion: true
     noWaitValidation: true
 
 - task: PublishPipelineArtifact@1
