@@ -1,0 +1,109 @@
+trigger: none
+pr: none
+
+stages:
+  - stage: ZeroTests
+    displayName: Reject a build with zero tests
+    jobs:
+      - job: PublishZeroTests
+        displayName: Publish zero-test result data
+        pool:
+          vmImage: ubuntu-latest
+        steps:
+          - pwsh: |
+              $ErrorActionPreference = 'Stop'
+              $resultsDirectory = Join-Path $env:AGENT_TEMPDIRECTORY 'ensure-tests-results'
+              New-Item -ItemType Directory -Force -Path $resultsDirectory | Out-Null
+              $xml = @'
+              <testsuites tests="0" failures="0" errors="0" skipped="0">
+                <testsuite name="EnsureTests" tests="0" failures="0" errors="0" skipped="0" />
+              </testsuites>
+              '@
+              [IO.File]::WriteAllText(
+                (Join-Path $resultsDirectory 'zero-tests.xml'),
+                $xml,
+                [Text.UTF8Encoding]::new($false)
+              )
+            displayName: Generate zero-test JUnit result
+
+          - task: PublishTestResults@2
+            displayName: Publish zero-test JUnit result
+            inputs:
+              testResultsFormat: JUnit
+              testResultsFiles: zero-tests.xml
+              searchFolder: $(Agent.TempDirectory)/ensure-tests-results
+              failTaskOnFailedTests: false
+              failTaskOnFailureToPublishResults: true
+
+      - job: AssertZeroTestsRejected
+        displayName: Ensure the server task rejects zero tests
+        dependsOn: PublishZeroTests
+        pool: server
+        steps:
+          - task: EnsureTestsHaveExecuted@0
+            displayName: Reject zero tests
+            continueOnError: true
+            inputs:
+              minNumOfExpectedTests: 1
+
+      - job: VerifyZeroTestsRejected
+        displayName: Verify the zero-test rejection
+        dependsOn: AssertZeroTestsRejected
+        condition: always()
+        pool:
+          vmImage: ubuntu-latest
+        steps:
+          - pwsh: |
+              if ($env:SERVER_TASK_RESULT -ne 'SucceededWithIssues') {
+                throw "Expected the server task to reject zero tests; got '$env:SERVER_TASK_RESULT'."
+              }
+            displayName: Assert expected server-task failure
+            env:
+              SERVER_TASK_RESULT: $[ dependencies.AssertZeroTestsRejected.result ]
+
+  - stage: AtLeastOneTest
+    displayName: Accept a build with at least one test
+    dependsOn: ZeroTests
+    condition: in(dependencies.ZeroTests.result, 'Succeeded', 'SucceededWithIssues')
+    jobs:
+      - job: PublishOneTest
+        displayName: Publish one-test result data
+        pool:
+          vmImage: ubuntu-latest
+        steps:
+          - pwsh: |
+              $ErrorActionPreference = 'Stop'
+              $resultsDirectory = Join-Path $env:AGENT_TEMPDIRECTORY 'ensure-tests-results'
+              New-Item -ItemType Directory -Force -Path $resultsDirectory | Out-Null
+              $xml = @'
+              <testsuites tests="1" failures="0" errors="0" skipped="0">
+                <testsuite name="EnsureTests" tests="1" failures="0" errors="0" skipped="0">
+                  <testcase classname="EnsureTests" name="one test" />
+                </testsuite>
+              </testsuites>
+              '@
+              [IO.File]::WriteAllText(
+                (Join-Path $resultsDirectory 'one-test.xml'),
+                $xml,
+                [Text.UTF8Encoding]::new($false)
+              )
+            displayName: Generate one-test JUnit result
+
+          - task: PublishTestResults@2
+            displayName: Publish one-test JUnit result
+            inputs:
+              testResultsFormat: JUnit
+              testResultsFiles: one-test.xml
+              searchFolder: $(Agent.TempDirectory)/ensure-tests-results
+              failTaskOnFailedTests: false
+              failTaskOnFailureToPublishResults: true
+
+      - job: AssertOneTestAccepted
+        displayName: Ensure the server task accepts one test
+        dependsOn: PublishOneTest
+        pool: server
+        steps:
+          - task: EnsureTestsHaveExecuted@0
+            displayName: Accept one test
+            inputs:
+              minNumOfExpectedTests: 1
