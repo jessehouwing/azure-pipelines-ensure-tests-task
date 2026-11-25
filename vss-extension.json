@@ -31,7 +31,7 @@
     "xebia"
   ],
   "screenshots": [
-    { "path": "extension/Images/Screenshots/configure-phase.png" }
+    { "path": "extension/images/Screenshots/configure-phase.png" }
   ],
   "content": {
     "details": {
@@ -81,7 +81,7 @@
       "path": "EnsureTests"
     },
     {
-      "path": "extension/Images/Screenshots/configure-phase.png",
+      "path": "extension/images/Screenshots/configure-phase.png",
       "addressable": true
     }
   ],
